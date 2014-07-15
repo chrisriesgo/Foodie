@@ -52,7 +52,8 @@ namespace Foodie.Service
 					WebsiteUrl = "http://pepperfirechicken.com/",
 					Price = 1,
 					Rating = 4,
-					FoodStyle = "Hot Chicken"
+					FoodStyle = "Hot Chicken",
+					Distance = 1.5
 				},
 			};
 		}
