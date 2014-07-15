@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using Foodie.Model;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace Foodie.Service
 {
 	public class RestaurantServiceStub: IRestaurantService
 	{
-		static FilterSettings _filter;
+		static FilterSettings _filter = FilterSettings.DefaultFilter;
 
 		public RestaurantServiceStub ()
 		{
@@ -82,11 +83,20 @@ namespace Foodie.Service
 		public void SetFilter (FilterSettings filter)
 		{
 			_filter = filter;
+
+			SendFilterUpdatedMessage ();
 		}
 
 		public void ResetFilter ()
 		{
 			_filter = FilterSettings.DefaultFilter;
+
+			SendFilterUpdatedMessage ();
+		}
+
+		void SendFilterUpdatedMessage()
+		{
+			MessagingCenter.Send<IRestaurantService> (this, "filter_updated");
 		}
 
 		public System.Collections.Generic.List<int> GetPriceFilterOptions ()

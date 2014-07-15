@@ -87,6 +87,24 @@ namespace Foodie.Test
 			Assert.AreEqual (3, list.Count);
 		}
 
+		[Test]
+		public void GetNearByAfterResetingFilterReturnsExpected()
+		{
+			IRestaurantService service = new RestaurantServiceStub ();
+
+			var filter = FilterSettings.DefaultFilter;
+			filter.FoodStyle = "Mexican";
+			service.SetFilter (filter);
+
+			var list = service.GetNearByRestaurants ();
+
+			service.ResetFilter ();
+
+			list = service.GetNearByRestaurants ();
+
+			Assert.AreEqual (3, list.Count);
+		}
+
 	}
 }
 

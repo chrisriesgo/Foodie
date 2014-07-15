@@ -43,6 +43,12 @@ namespace Foodie
 			{
 				Children = { listView }
 			};
+
+			MessagingCenter.Subscribe<IRestaurantService> (
+				this, 
+				"filter_updated",
+				x => { listView.ItemsSource = service.GetNearByRestaurants(); }
+			);
 		}
 	}
 }
