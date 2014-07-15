@@ -22,7 +22,7 @@ namespace Foodie.View.Cell
 			};
 
 			// create creator label 
-			var creatorLabel = new Label 
+			var nameLabel = new Label 
 			{
 				VerticalOptions = LayoutOptions.Center,
 				HorizontalOptions = LayoutOptions.StartAndExpand,
@@ -30,20 +30,8 @@ namespace Foodie.View.Cell
 				Font = Font.BoldSystemFontOfSize(16)
 			};
 
-			// create date and time label
-			var dateTimeLabel = new Label 
-			{
-				VerticalOptions = LayoutOptions.Center,
-				HorizontalOptions = LayoutOptions.EndAndExpand,
-				TextColor = Color.White,
-				Font = Font.SystemFontOfSize(12)
-			};
-
 			pic.SetBinding (Image.SourceProperty, "ImageUrl");
-			creatorLabel.SetBinding (Label.TextProperty, "Creator");
-			dateTimeLabel.SetBinding (Label.TextProperty, "DateAndTimeString");
-
-			/* - * end UI elements in Picture Cell * - */
+			nameLabel.SetBinding (Label.TextProperty, "Name");
 
 			// add children to relativeLayout
 			relativeLayout.Children.Add ((Image)pic, 
@@ -62,8 +50,7 @@ namespace Foodie.View.Cell
 				Padding = new Thickness(5, 0, 5, 0),
 				Children = 
 				{
-					(Label)creatorLabel,
-					(Label)dateTimeLabel
+					(Label)nameLabel,
 				}
 			};
 
