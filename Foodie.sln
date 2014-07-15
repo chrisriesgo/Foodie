@@ -53,6 +53,6 @@ Global
 		{FAF9B695-85CE-4F28-8417-D7EAB77DEF79}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = iOS\Foodie.iOS.csproj
+		StartupItem = Android\Foodie.Android.csproj
 	EndGlobalSection
 EndGlobal
