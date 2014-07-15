@@ -15,11 +15,6 @@ namespace Foodie
 
 			Title = restaurant.Name;
 
-			ToolbarItems.Add (new ToolbarItem () {
-				Name = "Fav",
-				Command = new Command( () => ToggleFavorite() )
-			});
-
 			var webView = new WebView
 			{
 				Source = new UrlWebViewSource { Url = restaurant.WebsiteUrl },
@@ -27,6 +22,21 @@ namespace Foodie
 			};
 
 			Content = webView;
+		}
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+
+			ToolbarItems.Add (new ToolbarItem () {
+				Name = _restaurant.IsFavorite ? "Unfav" : "Fav",
+				Command = new Command( () => ToggleFavorite() )
+			});
+		}
+
+		protected override void OnDisappearing ()
+		{
+			base.OnDisappearing ();
 		}
 			
 		// IsFavorite: true -> Unfav, false -> Fav

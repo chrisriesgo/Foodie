@@ -13,18 +13,6 @@ namespace Foodie
 		{
 			var service = DependencyService.Get<IRestaurantService>();
 
-			ToolbarItems.Add (new ToolbarItem () {
-				Name = "Filter",
-				#if __IOS__
-				Icon = "filter.png",
-				#endif
-				Command = new Command( () => 
-					Navigation.PushAsync( new FilterPage() {
-
-					})
-				)
-			});
-
 			BackgroundColor = Color.Silver;
 
 			BindingContext = this;
@@ -48,6 +36,23 @@ namespace Foodie
 			{
 				Children = { listView }
 			};
+		}
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+
+			ToolbarItems.Add (new ToolbarItem () {
+				Name = "Filter",
+				#if __IOS__
+				Icon = "filter.png",
+				#endif
+				Command = new Command( () => 
+					Navigation.PushAsync( new FilterPage() {
+
+					})
+				)
+			});
 		}
 	}
 }
