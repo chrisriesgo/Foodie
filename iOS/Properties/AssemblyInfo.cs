@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 
 // Foodie services
-[assembly: Xamarin.Forms.Dependency (typeof (Foodie.Service.RestaurantServiceStub))]
+// hint: register restaurant service here ...
 [assembly: Xamarin.Forms.Dependency (typeof (Foodie.Service.LocationServiceStubbed))]
 
 
