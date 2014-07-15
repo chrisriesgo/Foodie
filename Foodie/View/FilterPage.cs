@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Foodie.Service;
@@ -8,10 +9,14 @@ namespace Foodie
 	public class FilterPage: ContentPage
 	{
 		IRestaurantService _restaurantService;
+		FilterSettings _filter;
+		List<string> _foodStyleOptions;
 
 		public FilterPage ()
 		{
 			_restaurantService = DependencyService.Get<IRestaurantService> ();
+			_filter = _restaurantService.GetFilter ();
+			_foodStyleOptions = _restaurantService.GetFoodStyleFilterOptions ();
 
 			Title = "Filter";
 
@@ -20,30 +25,62 @@ namespace Foodie
 				Command = new Command( () => _restaurantService.ResetFilter() )
 			});
 
+			// RESULTS LABEL
 			var results = new Label () {
 				Text = "",
 				Font = Font.SystemFontOfSize (20),
-				BindingContext = this
 			};
-			results.SetBinding (Label.TextProperty, "ResultText");
-
-			var button1 = new Button () {
-				Text = "Apply filter"
+		
+			// FOOD STYLE PICKER
+			var foodStyle = new Picker () {
+				Title = "Food style",
+				WidthRequest = 200,
+				BindingContext = this,
+			};
+			foodStyle.Items.Add ("All");
+			_foodStyleOptions.ForEach (x => foodStyle.Items.Add (x));
+			foodStyle.SelectedIndexChanged += (sender, e) => {
+				if (foodStyle.SelectedIndex == 0)
+					_filter.FoodStyle = null;
+				else
+					_filter.FoodStyle = _foodStyleOptions [foodStyle.SelectedIndex-1];
+				_restaurantService.SetFilter(_filter);
+			};
+				
+			// MIN PRICE SLIDER
+			var priceLabel = new Label () {
+				Text = "Max Price"
 			};
 
-			button1.Clicked += (sender, e) => {
-				var filter = FilterSettings.DefaultFilter;
-				filter.FoodStyle = "Mexican";
-				_restaurantService.SetFilter (filter); 
+			var priceValue = new Label () {
+				Text = _filter.MaxPrice.ToString()
 			};
 
+			var price = new Slider (1, 5, 3) {
+				WidthRequest = 150
+			};
+			price.ValueChanged += (sender, e) => {
+				if ( Math.Round(price.Value) != _filter.MaxPrice) 
+				{
+					_filter.MaxPrice = Convert.ToInt32(price.Value);
+					priceValue.Text = _filter.MaxPrice.ToString();
+					_restaurantService.SetFilter(_filter);
+				}
+			};
+				
+			var priceStack = new StackLayout () {
+				Orientation = StackOrientation.Horizontal,
+				Children = { priceLabel, price, priceValue }
+			};
+			
 			var stacked = new StackLayout () {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				VerticalOptions = LayoutOptions.CenterAndExpand
+
 			};
 
 			stacked.Children.Add (results);
-			stacked.Children.Add (button1);
+			stacked.Children.Add (foodStyle);
+			stacked.Children.Add (priceStack);
 
 			Content = stacked;
 
@@ -52,23 +89,9 @@ namespace Foodie
 				"filter_updated",
 				x => { 
 					int matches = _restaurantService.GetNearByRestaurants().Count;
-					ResultText = matches + " match" + (matches == 1 ? "" : "es");
+					results.Text = matches + " match" + (matches == 1 ? "" : "es");
 				}
 			);
-		}
-
-		string _resultText;
-		public string ResultText
-		{
-			get
-			{
-				return _resultText;
-			}
-			set
-			{
-				_resultText = value;
-				OnPropertyChanged();
-			}
 		}
 
 		protected override void OnDisappearing ()
