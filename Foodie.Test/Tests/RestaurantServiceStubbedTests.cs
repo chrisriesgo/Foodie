@@ -9,6 +9,7 @@ namespace Foodie.Test
 	{
 		public RestaurantServiceStubbedTests ()
 		{
+
 		}
 
 		[Test]
@@ -18,6 +19,26 @@ namespace Foodie.Test
 			var list = service.GetFavoriteRestaurants ();
 
 			list.ForEach (x => Assert.IsTrue (x.IsFavorite));
+		}
+
+		[Test]
+		public void SetFavoriteOff()
+		{
+			IRestaurantService service = new RestaurantServiceStub ();
+			service.SetFavoriteRestaurant (1, false);
+			var list = service.GetFavoriteRestaurants ();
+
+			Assert.AreEqual (0, list.Count);
+		}
+
+		[Test]
+		public void SetFavoriteOn()
+		{
+			IRestaurantService service = new RestaurantServiceStub ();
+			service.SetFavoriteRestaurant (2, false);
+			var list = service.GetFavoriteRestaurants ();
+
+			Assert.AreEqual (2, list.Count);
 		}
 
 		[Test]

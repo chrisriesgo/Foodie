@@ -5,6 +5,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.NUnit.UI;
+using Xamarin.Forms;
 
 namespace Foodie.Test
 {
@@ -27,6 +28,9 @@ namespace Foodie.Test
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			Forms.Init ();
+
+
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			runner = new TouchRunner (window);

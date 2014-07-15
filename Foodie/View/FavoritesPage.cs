@@ -33,6 +33,12 @@ namespace Foodie
 			{
 				Children = { listView }
 			};
+
+			MessagingCenter.Subscribe<IRestaurantService> (
+				this, 
+				"favorites_updated",
+				x => { listView.ItemsSource = service.GetFavoriteRestaurants(); }
+			);
 		}
 	}
 }
