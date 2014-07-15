@@ -28,13 +28,18 @@ namespace Foodie
 			// RESULTS LABEL
 			var results = new Label () {
 				Text = "",
-				Font = Font.SystemFontOfSize (20),
+				Font = Font.SystemFontOfSize (30),
+				HorizontalOptions = LayoutOptions.Center
 			};
 		
 			// FOOD STYLE PICKER
+			var foodStyleLabel = new Label () {
+				Text = "Style"
+			};
+
 			var foodStyle = new Picker () {
 				Title = "Food style",
-				WidthRequest = 200,
+				WidthRequest = 150,
 				BindingContext = this,
 			};
 			foodStyle.Items.Add ("All");
@@ -45,6 +50,11 @@ namespace Foodie
 				else
 					_filter.FoodStyle = _foodStyleOptions [foodStyle.SelectedIndex-1];
 				_restaurantService.SetFilter(_filter);
+			};
+
+			var foodStyleStack = new StackLayout () {
+				Orientation = StackOrientation.Horizontal,
+				Children = { foodStyleLabel, foodStyle }
 			};
 				
 			// MIN PRICE SLIDER
@@ -57,7 +67,8 @@ namespace Foodie
 			};
 
 			var price = new Slider (1, 5, 3) {
-				WidthRequest = 150
+				WidthRequest = 150,
+				Value = _filter.MaxPrice
 			};
 			price.ValueChanged += (sender, e) => {
 				if ( Math.Round(price.Value) != _filter.MaxPrice) 
@@ -75,11 +86,11 @@ namespace Foodie
 			
 			var stacked = new StackLayout () {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-
+				Spacing = 30
 			};
 
 			stacked.Children.Add (results);
-			stacked.Children.Add (foodStyle);
+			stacked.Children.Add (foodStyleStack);
 			stacked.Children.Add (priceStack);
 
 			Content = stacked;
