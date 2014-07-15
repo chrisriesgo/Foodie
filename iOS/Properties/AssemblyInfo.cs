@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 
 // Foodie services
 [assembly: Xamarin.Forms.Dependency (typeof (Foodie.Service.RestaurantServiceStub))]
+[assembly: Xamarin.Forms.Dependency (typeof (Foodie.Service.LocationServiceStubbed))]
 
 
 // Information about this assembly is defined by the following attributes.

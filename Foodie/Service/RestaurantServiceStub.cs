@@ -10,7 +10,7 @@ namespace Foodie.Service
 		{
 		}
 
-		public List<Restaurant> GetNearByRestaurants (double latitude, double longitude)
+		public List<Restaurant> GetNearByRestaurants ()
 		{
 			return new List<Restaurant> () {
 				new Restaurant() {

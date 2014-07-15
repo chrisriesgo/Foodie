@@ -6,7 +6,7 @@ namespace Foodie.Service
 {
 	public interface IRestaurantService
 	{
-		List<Restaurant> GetNearByRestaurants(double latitude, double longitude);
+		List<Restaurant> GetNearByRestaurants();
 		List<Restaurant> GetFavoriteRestaurants();
 
 		void SetFavoriteRestaurant(int id, bool isFavorite);
