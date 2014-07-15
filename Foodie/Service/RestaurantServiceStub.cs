@@ -6,6 +6,8 @@ namespace Foodie.Service
 {
 	public class RestaurantServiceStub: IRestaurantService
 	{
+		static FilterSettings _filter;
+
 		public RestaurantServiceStub ()
 		{
 		}
@@ -62,20 +64,14 @@ namespace Foodie.Service
 		{
 		}
 
-		public void SetMaxPriceFilter (int maxPrice)
+		public void SetFilter (FilterSettings filter)
 		{
-		}
-
-		public void SetMinRatingFilter (int minPrice)
-		{
-		}
-
-		public void SetFoodStyleFilter (string foodStyle)
-		{
+			_filter = filter;
 		}
 
 		public void ResetFilter ()
 		{
+			_filter = FilterSettings.DefaultFilter;
 		}
 
 		public System.Collections.Generic.List<int> GetPriceFilterOptions ()
