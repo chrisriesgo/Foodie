@@ -57,7 +57,7 @@ namespace Foodie
 				Children = { foodStyleLabel, foodStyle }
 			};
 				
-			// MIN PRICE SLIDER
+			// MAX PRICE SLIDER
 			var priceLabel = new Label () {
 				Text = "Max Price"
 			};
@@ -66,7 +66,7 @@ namespace Foodie
 				Text = _filter.MaxPrice.ToString()
 			};
 
-			var price = new Slider (1, 5, 3) {
+			var price = new Slider (1, 3, 2) {
 				WidthRequest = 150,
 				Value = _filter.MaxPrice
 			};
