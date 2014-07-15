@@ -11,10 +11,7 @@ namespace Foodie.Service
 
 		void SetFavoriteRestaurant(int id, bool isFavorite);
 
-		void SetMaxPriceFilter (int maxPrice);
-		void SetMinRatingFilter (int minPrice);
-		void SetFoodStyleFilter (string foodStyle);
-
+		void SetFilter(FilterSettings filter);
 		void ResetFilter();
 
 		List<int> GetPriceFilterOptions ();
@@ -22,4 +19,3 @@ namespace Foodie.Service
 		List<string> GetFoodStyleFilterOptions ();
 	}
 }
-

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\ILocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\GeoLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\LocationServiceStubbed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\FilterSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)View\" />
