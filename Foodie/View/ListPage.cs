@@ -38,6 +38,7 @@ namespace Foodie
 			listView.ItemTapped += (sender, e) => 
 			{ 
 				Navigation.PushAsync(new WebsitePage(e.Item as Restaurant));
+				listView.SelectedItem = null;
 			};
 
 			this.Content = new StackLayout 
