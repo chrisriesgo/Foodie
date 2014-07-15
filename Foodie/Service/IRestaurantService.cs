@@ -12,6 +12,7 @@ namespace Foodie.Service
 		void SetFavoriteRestaurant(int id, bool isFavorite);
 
 		void SetFilter(FilterSettings filter);
+		FilterSettings GetFilter ();
 		void ResetFilter();
 
 		List<int> GetPriceFilterOptions ();

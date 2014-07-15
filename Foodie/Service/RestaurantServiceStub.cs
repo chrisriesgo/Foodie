@@ -107,6 +107,11 @@ namespace Foodie.Service
 			SendFilterUpdatedMessage ();
 		}
 
+		public FilterSettings GetFilter ()
+		{
+			return _filter;
+		}
+
 		public void ResetFilter ()
 		{
 			_filter = FilterSettings.DefaultFilter;
