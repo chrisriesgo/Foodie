@@ -82,12 +82,12 @@ namespace Foodie.Service
 			return new List<int> { 1, 2, 3 };
 		}
 
-		public System.Collections.Generic.List<int> GetRatingFiltetOptions ()
+		public System.Collections.Generic.List<int> GetRatingFilterOptions ()
 		{
 			return new List<int> { 1, 2, 3, 4, 5 };
 		}
 
-		public System.Collections.Generic.List<string> GetFoodStyleFiltetOptions ()
+		public System.Collections.Generic.List<string> GetFoodStyleFilterOptions ()
 		{
 			return new List<string> () { "Hot Chicken" };
 		}
