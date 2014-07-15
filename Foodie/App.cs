@@ -7,7 +7,16 @@ namespace Foodie
 	{
 		public static Page GetMainPage ()
 		{	
-			return new NavigationPage (new ListPage ());
+			return new NavigationPage (new TabbedPage 
+				{
+					Title = "Foodie",
+					Children = 
+					{
+						new ListPage { Title = "Nearby" },
+						new FavoritesPage { Title = "Favorites" }
+					}
+				}
+			);
 		}
 	}
 }
