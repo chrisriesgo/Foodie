@@ -18,8 +18,8 @@ namespace Foodie.Service
 		void ResetFilter();
 
 		List<int> GetPriceFilterOptions ();
-		List<int> GetRatingFiltetOptions ();
-		List<string> GetFoodStyleFiltetOptions ();
+		List<int> GetRatingFilterOptions ();
+		List<string> GetFoodStyleFilterOptions ();
 	}
 }
 
