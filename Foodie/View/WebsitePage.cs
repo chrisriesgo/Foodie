@@ -16,7 +16,7 @@ namespace Foodie
 			Title = restaurant.Name;
 
 			ToolbarItems.Add (new ToolbarItem () {
-				Name = "fav",
+				Name = "Fav",
 				Command = new Command( () => ToggleFavorite() )
 			});
 
@@ -29,9 +29,31 @@ namespace Foodie
 			Content = webView;
 		}
 			
+		// IsFavorite: true -> Unfav, false -> Fav
 		void ToggleFavorite ()
 		{
 			_restaurant.IsFavorite = !_restaurant.IsFavorite;
+
+			if (_restaurant.IsFavorite) 
+			{
+				ToolbarItems.RemoveAt (0);
+				ToolbarItems.Add (new ToolbarItem 
+					{
+						Name = "Unfav",
+						Command = new Command(() => ToggleFavorite())
+					}
+				);
+			} 
+			else 
+			{
+				ToolbarItems.RemoveAt (0);
+				ToolbarItems.Add (new ToolbarItem 
+					{
+						Name = "Fav",
+						Command = new Command(() => ToggleFavorite())
+					}
+				);
+			}
 
 			var service = DependencyService.Get<IRestaurantService> ();
 			service.SetFavoriteRestaurant (_restaurant.Id, _restaurant.IsFavorite);
