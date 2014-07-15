@@ -52,6 +52,97 @@ namespace Foodie.Service
 				FoodStyle = "Mexican",
 				Distance = 0.2,
 				IsFavorite = true
+			},
+			new Restaurant () {
+				Id = 4,
+				Name = "Far East",
+				Latitude = 36.174147,
+				Longitude = -86.751058,
+				ImageUrl = "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2011/07/East-Nashville-TN-15-480x320-1392490754.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/far-east-nashville-nashville?osq=Far+East",
+				Price = 2,
+				Rating = 4,
+				FoodStyle = "Thai",
+				Distance = 0.4,
+				IsFavorite = false
+			},
+			new Restaurant () {
+				Id = 5,
+				Name = "Mas Tacos",
+				Latitude = 36.184770,
+				Longitude = -86.754666,
+				ImageUrl = "http://media-cdn.tripadvisor.com/media/photo-s/03/1d/89/4f/mas-tacos.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/mas-tacos-nashville",
+				Price = 1,
+				Rating = 5,
+				FoodStyle = "Mexican",
+				Distance = 0.8,
+				IsFavorite = true
+			},
+			new Restaurant () {
+				Id = 6,
+				Name = "Bongo Java",
+				Latitude = 36.177035,
+				Longitude = -86.749639,
+				ImageUrl = "http://media-cdn.tripadvisor.com/media/photo-s/01/79/b6/ff/bongo-java-where-coffee.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/bongo-java-east-nashville",
+				Price = 1,
+				Rating = 3,
+				FoodStyle = "Coffee House",
+				Distance = 0.2,
+				IsFavorite = false
+			},
+			new Restaurant () {
+				Id = 7,
+				Name = "Battr'd & Fried",
+				Latitude = 36.176965,
+				Longitude = -86.750829,
+				ImageUrl = "http://www.batteredandfried.com/uploaded/gallery/big/photo_01.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/batterd-and-fried-boston-seafood-house-nashville",
+				Price = 2,
+				Rating = 3,
+				FoodStyle = "Pub",
+				Distance = 0.1,
+				IsFavorite = false
+			},
+			new Restaurant () {
+				Id = 8,
+				Name = "The Pharmacy",
+				Latitude = 36.184936,
+				Longitude = -86.754206,
+				ImageUrl = "http://whocookedthisish.files.wordpress.com/2012/10/pharmacy.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/the-pharmacy-burger-parlor-and-beer-garden-nashville",
+				Price = 2,
+				Rating = 4,
+				FoodStyle = "American",
+				Distance = 0.8,
+				IsFavorite = true
+			},
+			new Restaurant () {
+				Id = 9,
+				Name = "Sky Blue Cafe",
+				Latitude = 36.171367,
+				Longitude = -86.758867,
+				ImageUrl = "http://www.nashvillelifestyles.com/_scripts/img_pp_crop.php?w=632&h=475&img=/_uploads/articles/BlueSky.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/sky-blue-cafe-nashville",
+				Price = 1,
+				Rating = 4,
+				FoodStyle = "Coffee House",
+				Distance = 0.7,
+				IsFavorite = false
+			},
+			new Restaurant () {
+				Id = 10,
+				Name = "Fat Bottom Brewery",
+				Latitude = 36.175879,
+				Longitude = -86.757046,
+				ImageUrl = "http://www.nashvillescene.com/binary/8d27/1326835076-fatbottomrendering.jpg",
+				WebsiteUrl = "http://www.yelp.com/biz/fat-bottom-brewing-nashville?osq=fat+bottom+brewery",
+				Price = 2,
+				Rating = 4,
+				FoodStyle = "Pub",
+				Distance = 0.4,
+				IsFavorite = false
 			}
 		};
 
@@ -136,7 +227,15 @@ namespace Foodie.Service
 
 		public System.Collections.Generic.List<string> GetFoodStyleFilterOptions ()
 		{
-			return new List<string> () { "Hot Chicken", "Mexican" };
+			return new List<string> () 
+			{ 
+				"American",
+				"Coffee House",
+				"Hot Chicken", 
+				"Mexican",
+				"Pub",
+				"Thai"
+			};
 		}
 	}
 }
