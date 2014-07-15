@@ -29,11 +29,11 @@ namespace Foodie.Test
 
 			var list = service.GetNearByRestaurants ();
 
-			Assert.AreEqual (2, list.Count);
+			Assert.AreEqual (3, list.Count);
 		}
 
 		[Test]
-		public void GetNearByWithFilterReturnsExpected()
+		public void GetNearByWithRatingFilterReturnsExpected()
 		{
 			IRestaurantService service = new RestaurantServiceStub ();
 
@@ -43,8 +43,50 @@ namespace Foodie.Test
 
 			var list = service.GetNearByRestaurants ();
 
+			Assert.AreEqual (2, list.Count);
+		}
+
+		[Test]
+		public void GetNearByWithPriceFilterReturnsExpected()
+		{
+			IRestaurantService service = new RestaurantServiceStub ();
+
+			var filter = FilterSettings.DefaultFilter;
+			filter.MaxPrice = 1;
+			service.SetFilter (filter);
+
+			var list = service.GetNearByRestaurants ();
+
+			Assert.AreEqual (2, list.Count);
+		}
+
+		[Test]
+		public void GetNearByWithFoodStyleFilterReturnsExpected()
+		{
+			IRestaurantService service = new RestaurantServiceStub ();
+
+			var filter = FilterSettings.DefaultFilter;
+			filter.FoodStyle = "Mexican";
+			service.SetFilter (filter);
+
+			var list = service.GetNearByRestaurants ();
+
 			Assert.AreEqual (1, list.Count);
 		}
+
+		[Test]
+		public void GetNearByWithDefaultFilterReturnsExpected()
+		{
+			IRestaurantService service = new RestaurantServiceStub ();
+
+			var filter = FilterSettings.DefaultFilter;
+			service.SetFilter (filter);
+
+			var list = service.GetNearByRestaurants ();
+
+			Assert.AreEqual (3, list.Count);
+		}
+
 	}
 }
 

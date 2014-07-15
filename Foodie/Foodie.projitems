@@ -28,5 +28,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Service\" />
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
     <Folder Include="$(MSBuildThisFileDirectory)View\Cell\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Message\" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ namespace Foodie.Service
 						Latitude = 36.201854,
 						Longitude = -86.739916,
 						ImageUrl = "http://media-cdn.tripadvisor.com/media/photo-s/04/18/31/e1/pepperfire.jpg",
-						WebsiteUrl = "http://pepperfirechicken.com/",
+						WebsiteUrl = "http://www.yelp.com/biz/pepperfire-nashville",
 						Price = 1,
 						Rating = 4,
 						FoodStyle = "Hot Chicken",
@@ -43,13 +43,31 @@ namespace Foodie.Service
 						Distance = 5.4,
 						IsFavorite = false
 					},
+					new Restaurant () {
+						Id = 3,
+						Name = "Five Points Cocina Mexicana",
+						Latitude = 36.177633,
+						Longitude = -86.752100,
+						ImageUrl = "https://www.springrewards.com/dyn_assets/images/merchants/fivepointscocina/img.jpg",
+						WebsiteUrl = "http://www.yelp.com/biz/five-points-cocina-mexicana-nashville",
+						Price = 2,
+						Rating = 4,
+						FoodStyle = "Mexican",
+						Distance = 0.2,
+						IsFavorite = true
+					},
+
 				};
 			}
 		}
 
 		public List<Restaurant> GetNearByRestaurants ()
 		{
-			return MasterList;
+			return MasterList.Where(x => 
+				x.Rating >= _filter.MinRating &&
+				x.Price <= _filter.MaxPrice &&
+				(_filter.FoodStyle != null ? x.FoodStyle == _filter.FoodStyle : true)
+			).ToList();
 		}
 
 		public List<Restaurant> GetFavoriteRestaurants ()
@@ -83,7 +101,7 @@ namespace Foodie.Service
 
 		public System.Collections.Generic.List<string> GetFoodStyleFilterOptions ()
 		{
-			return new List<string> () { "Hot Chicken" };
+			return new List<string> () { "Hot Chicken", "Mexican" };
 		}
 	}
 }
