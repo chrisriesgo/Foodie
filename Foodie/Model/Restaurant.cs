@@ -16,6 +16,7 @@ namespace Foodie.Model
 
 		// denormalized
 		public bool IsFavorite { get; set; }
+		public double Distance { get; set; }
 	}
 }
 

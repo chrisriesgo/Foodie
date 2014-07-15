@@ -22,7 +22,8 @@ namespace Foodie.Service
 					WebsiteUrl = "http://pepperfirechicken.com/",
 					Price = 1,
 					Rating = 4,
-					FoodStyle = "Hot Chicken"
+					FoodStyle = "Hot Chicken",
+					Distance = 1.5
 				},
 				new Restaurant() {
 					Id = 2,
@@ -33,7 +34,8 @@ namespace Foodie.Service
 					WebsiteUrl = "http://www.yelp.com/biz/princes-hot-chicken-shack-nashville",
 					Price = 1,
 					Rating = 4,
-					FoodStyle = "Hot Chicken"
+					FoodStyle = "Hot Chicken",
+					Distance = 5.4
 				},
 			};
 		}
