@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Foodie.Service;
 
@@ -19,6 +20,13 @@ namespace Foodie
 				Command = new Command( () => _restaurantService.ResetFilter() )
 			});
 
+			var results = new Label () {
+				Text = "",
+				Font = Font.SystemFontOfSize (20),
+				BindingContext = this
+			};
+			results.SetBinding (Label.TextProperty, "ResultText");
+
 			var button1 = new Button () {
 				Text = "Apply filter"
 			};
@@ -34,24 +42,40 @@ namespace Foodie
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
+			stacked.Children.Add (results);
 			stacked.Children.Add (button1);
 
 			Content = stacked;
 
-//			MessagingCenter.Subscribe<IRestaurantService> (
-//				this, 
-//				"filter_updated",
-//				x => { DisplayAlert("Filter updated", "Someone updated the filter ...", "ok", null); }
-//			);
-
+			MessagingCenter.Subscribe<IRestaurantService> (
+				this, 
+				"filter_updated",
+				x => { 
+					int matches = _restaurantService.GetNearByRestaurants().Count;
+					ResultText = matches + " match" + (matches == 1 ? "" : "es");
+				}
+			);
 		}
 
-//		protected override void OnDisappearing ()
-//		{
-//			base.OnDisappearing ();
-//
-//			MessagingCenter.Unsubscribe<IRestaurantService> (this, "filter_updated");
-//		}
+		string _resultText;
+		public string ResultText
+		{
+			get
+			{
+				return _resultText;
+			}
+			set
+			{
+				_resultText = value;
+				OnPropertyChanged();
+			}
+		}
+
+		protected override void OnDisappearing ()
+		{
+			base.OnDisappearing ();
+			MessagingCenter.Unsubscribe<IRestaurantService> (this, "filter_updated");
+		}
 	}
 }
 
