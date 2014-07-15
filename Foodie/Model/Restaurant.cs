@@ -17,6 +17,10 @@ namespace Foodie.Model
 		// denormalized
 		public bool IsFavorite { get; set; }
 		public double Distance { get; set; }
+		public string DistanceString 
+		{
+			get { return string.Format ("{0} mi", Distance); }
+		}
 	}
 }
 
