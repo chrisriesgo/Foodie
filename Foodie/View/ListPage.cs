@@ -36,6 +36,10 @@ namespace Foodie
 				ItemsSource = service.GetNearByRestaurants (0, 0),
 				ItemTemplate = new DataTemplate (typeof(PlaceCell))
 			};
+					
+			listView.ItemTapped += (sender, e) => { 
+				Navigation.PushAsync(new WebsitePage(e.Item as Restaurant));
+			};
 
 			this.Content = new StackLayout 
 			{
