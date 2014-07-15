@@ -1,6 +1,12 @@
 Foodie: a Sample Xamarin.Forms App
 ==================================
 
+Instructions:
+
+1. Find a buddy or be a wolfpack of one
+2. Fork the Foodie repo
+3. Dig in ...
+
 Exercises:
 
 1. (Do this first) In the iOS and Android apps, register an implementation of IRestaurantService. Hint: we're doing something similar from LocationService already. Background: http://developer.xamarin.com/guides/cross-platform/xamarin-forms/dependency-service/.
