@@ -16,10 +16,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\FilterPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\ListPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\WebsitePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Cell\PlaceCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)View\" />
     <Folder Include="$(MSBuildThisFileDirectory)Service\" />
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
+    <Folder Include="$(MSBuildThisFileDirectory)View\Cell\" />
   </ItemGroup>
 </Project>

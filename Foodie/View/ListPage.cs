@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
+using Foodie.Model;
+using Foodie.Service;
+using Foodie.View.Cell;
 
 namespace Foodie
 {
-	public class ListPage: TabbedPage
+	public class ListPage: ContentPage
 	{
 		public ListPage ()
 		{
-			Title = "Foodie";
+			var service = DependencyService.Get<IRestaurantService>();
+
+			Title = "East Nashville";
 
 			ToolbarItems.Add (new ToolbarItem () {
 				Name = "filter",
@@ -17,6 +23,28 @@ namespace Foodie
 					})
 				)
 			});
+
+			BackgroundColor = Color.Silver;
+
+			BindingContext = this;
+			var listView = new ListView 
+			{
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				RowHeight = 250,
+				InputTransparent = false,
+				ItemsSource = service.GetNearByRestaurants (0, 0),
+				ItemTemplate = new DataTemplate (typeof(PlaceCell))
+			};
+					
+			listView.ItemTapped += (sender, e) => { 
+				Navigation.PushAsync(new WebsitePage(e.Item as Restaurant));
+			};
+
+			this.Content = new StackLayout 
+			{
+				Children = { listView }
+			};
 		}
 	}
 }
