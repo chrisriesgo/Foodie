@@ -8,6 +8,15 @@ namespace Foodie
 		public ListPage ()
 		{
 			Title = "Foodie";
+
+			ToolbarItems.Add (new ToolbarItem () {
+				Name = "filter",
+				Command = new Command( () => 
+					Navigation.PushAsync( new FilterPage() {
+
+					})
+				)
+			});
 		}
 	}
 }
