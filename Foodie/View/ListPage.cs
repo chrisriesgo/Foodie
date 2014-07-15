@@ -33,7 +33,7 @@ namespace Foodie
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				RowHeight = 250,
 				InputTransparent = false,
-				ItemsSource = service.GetNearByRestaurants (0, 0),
+				ItemsSource = service.GetNearByRestaurants (),
 				ItemTemplate = new DataTemplate (typeof(PlaceCell))
 			};
 					
