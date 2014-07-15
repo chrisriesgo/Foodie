@@ -13,6 +13,8 @@ namespace Foodie
 		{
 			var service = DependencyService.Get<IRestaurantService>();
 
+			BackgroundColor = Color.Silver;
+
 			ToolbarItems.Add (new ToolbarItem () {
 				Name = "Filter",
 				#if __IOS__
@@ -24,8 +26,6 @@ namespace Foodie
 					})
 				)
 			});
-
-			BackgroundColor = Color.Silver;
 
 			BindingContext = this;
 			var listView = new ListView 
