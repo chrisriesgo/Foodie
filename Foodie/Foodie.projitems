@@ -22,11 +22,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\LocationServiceStubbed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\FavoritesPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\FilterSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\Haversine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)View\" />
     <Folder Include="$(MSBuildThisFileDirectory)Service\" />
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
     <Folder Include="$(MSBuildThisFileDirectory)View\Cell\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Utility\" />
   </ItemGroup>
 </Project>

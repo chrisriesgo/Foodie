@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using Foodie.Model;
 using System.Linq;
 using Xamarin.Forms;
+using Foodie.Utility;
 
 namespace Foodie.Service
 {
 	public class RestaurantServiceStub: IRestaurantService
 	{
+		ILocationService _locationService;
 		static FilterSettings _filter = FilterSettings.DefaultFilter;
 
 		public RestaurantServiceStub ()
 		{
+			_locationService = DependencyService.Get<ILocationService> ();
 		}
 
 		List<Restaurant> MasterList
@@ -34,8 +37,8 @@ namespace Foodie.Service
 					new Restaurant () {
 						Id = 2,
 						Name = "Prince’s Hot Chicken Shack",
-						Latitude = 36.201854,
-						Longitude = -86.739916,
+						Latitude = 36.230029,
+						Longitude = -86.761071,
 						ImageUrl = "http://www.hamburgercalculus.com/blog/wp-content/uploads/2009/01/princesfront.gif",
 						WebsiteUrl = "http://www.yelp.com/biz/princes-hot-chicken-shack-nashville",
 						Price = 1,
@@ -64,16 +67,29 @@ namespace Foodie.Service
 
 		public List<Restaurant> GetNearByRestaurants ()
 		{
-			return MasterList.Where(x => 
+			var filtered = MasterList.Where(x => 
 				x.Rating >= _filter.MinRating &&
 				x.Price <= _filter.MaxPrice &&
 				(_filter.FoodStyle != null ? x.FoodStyle == _filter.FoodStyle : true)
 			).ToList();
+
+			return SetDistanceAndSort (filtered);
 		}
 
 		public List<Restaurant> GetFavoriteRestaurants ()
 		{
-			return MasterList.Where(x => x.IsFavorite).ToList();
+			var filtered = MasterList.Where(x => x.IsFavorite).ToList();
+
+			return SetDistanceAndSort (filtered);
+		}
+
+		List<Restaurant> SetDistanceAndSort(List<Restaurant> r)
+		{
+			GeoLocation loc = _locationService.GetCurrentLocation ();
+
+			r.ForEach (x => x.Distance = Math.Round( Haversine.DistanceMi (x.Latitude, x.Longitude, loc.Latitude, loc.Longitude), 1));
+
+			return r.OrderBy (x => x.Distance).ToList();
 		}
 
 		public void SetFavoriteRestaurant (int id, bool isFavorite)
