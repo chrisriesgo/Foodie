@@ -70,6 +70,8 @@
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\nearby.png" />
+    <AndroidResource Include="Resources\drawable\fav.png" />
   </ItemGroup>
   <Import Project="..\Foodie\Foodie.projitems" Label="Shared" Condition="Exists('..\Foodie\Foodie.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
