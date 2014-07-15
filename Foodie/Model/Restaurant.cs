@@ -15,7 +15,7 @@ namespace Foodie.Model
 		public string WebsiteUrl { get; set; }
 
 		// denormalized
-		bool IsFavorite { get; set; }
+		public bool IsFavorite { get; set; }
 	}
 }
 
