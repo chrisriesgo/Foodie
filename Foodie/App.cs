@@ -12,8 +12,16 @@ namespace Foodie
 					Title = "Foodie",
 					Children = 
 					{
-						new ListPage { Title = "Nearby" },
-						new FavoritesPage { Title = "Favorites" }
+						new ListPage 
+						{ 
+							Title = "Nearby",
+							Icon = "nearby.png"
+						},
+						new FavoritesPage 
+						{ 
+							Title = "Favorites",
+							Icon = "fav.png"
+						}
 					}
 				}
 			);

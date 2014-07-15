@@ -8,7 +8,6 @@ namespace Foodie
 	public class WebsitePage: ContentPage
 	{
 		Restaurant _restaurant;
-		ToolbarItem _fav;
 
 		public WebsitePage (Restaurant restaurant)
 		{
@@ -16,29 +15,45 @@ namespace Foodie
 
 			Title = restaurant.Name;
 
-			_fav = new ToolbarItem () {
-				Name = "fav",
-				Command = new Command (() => ToggleFavorite ()),
-			};
+			ToolbarItems.Add (new ToolbarItem () {
+				Name = "Fav",
+				Command = new Command( () => ToggleFavorite() )
+			});
 
-			ToolbarItems.Add (_fav);
-
-			Content = new WebView
+			var webView = new WebView
 			{
-				Source = new UrlWebViewSource
-				{
-					Url = restaurant.WebsiteUrl,
-				},
+				Source = new UrlWebViewSource { Url = restaurant.WebsiteUrl },
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
+
+			Content = webView;
 		}
 			
+		// IsFavorite: true -> Unfav, false -> Fav
 		void ToggleFavorite ()
 		{
 			_restaurant.IsFavorite = !_restaurant.IsFavorite;
 
-			// TODO: this doesn't seem to work :(
-			_fav.Name = _restaurant.IsFavorite ? "unfav" : "fav";
+			if (_restaurant.IsFavorite) 
+			{
+				ToolbarItems.RemoveAt (0);
+				ToolbarItems.Add (new ToolbarItem 
+					{
+						Name = "Unfav",
+						Command = new Command(() => ToggleFavorite())
+					}
+				);
+			} 
+			else 
+			{
+				ToolbarItems.RemoveAt (0);
+				ToolbarItems.Add (new ToolbarItem 
+					{
+						Name = "Fav",
+						Command = new Command(() => ToggleFavorite())
+					}
+				);
+			}
 
 			var service = DependencyService.Get<IRestaurantService> ();
 			service.SetFavoriteRestaurant (_restaurant.Id, _restaurant.IsFavorite);
