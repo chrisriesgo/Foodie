@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Foodie.Model;
 using System.Linq;
 using Xamarin.Forms;
-using Foodie.Utility;
 
 namespace Foodie.Service
 {
