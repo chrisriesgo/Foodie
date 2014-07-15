@@ -35,7 +35,8 @@ namespace Foodie
 				ItemTemplate = new DataTemplate (typeof(PlaceCell))
 			};
 					
-			listView.ItemTapped += (sender, e) => { 
+			listView.ItemTapped += (sender, e) => 
+			{ 
 				Navigation.PushAsync(new WebsitePage(e.Item as Restaurant));
 			};
 
@@ -43,12 +44,6 @@ namespace Foodie
 			{
 				Children = { listView }
 			};
-
-			MessagingCenter.Subscribe<IRestaurantService> (
-				this, 
-				"filter_updated",
-				x => { listView.ItemsSource = service.GetNearByRestaurants(); }
-			);
 		}
 	}
 }
