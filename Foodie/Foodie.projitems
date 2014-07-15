@@ -20,7 +20,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\ILocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\GeoLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\LocationServiceStubbed.cs" />
+<<<<<<< HEAD
+    <Compile Include="$(MSBuildThisFileDirectory)View\FavoritesPage.cs" />
+=======
     <Compile Include="$(MSBuildThisFileDirectory)Model\FilterSettings.cs" />
+>>>>>>> a20589155bf6451f868540d4742e38f44d52f651
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)View\" />
