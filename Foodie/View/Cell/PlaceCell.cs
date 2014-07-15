@@ -34,7 +34,7 @@ namespace Foodie.View.Cell
 			nameLabel.SetBinding (Label.TextProperty, "Name");
 
 			// add children to relativeLayout
-			relativeLayout.Children.Add ((Image)pic, 
+			relativeLayout.Children.Add (pic, 
 				Constraint.Constant (0), 
 				Constraint.Constant (0),
 				Constraint.RelativeToParent ((parent) => { return parent.Width; }),
