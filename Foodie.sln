@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodie.iOS", "iOS\Foodie.iO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodie.Android", "Android\Foodie.Android.csproj", "{FAF9B695-85CE-4F28-8417-D7EAB77DEF79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodie.Test", "Foodie.Test\Foodie.Test.csproj", "{97FF271D-E95D-4272-99A5-146992BE7CEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -35,6 +37,22 @@ Global
 		{57E75C55-7F36-44A8-8E8C-9EEEC10E87D5}.Release|iPhone.Build.0 = Release|iPhone
 		{57E75C55-7F36-44A8-8E8C-9EEEC10E87D5}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{57E75C55-7F36-44A8-8E8C-9EEEC10E87D5}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Debug|iPhone.Build.0 = Debug|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Release|iPhone.ActiveCfg = Release|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Release|iPhone.Build.0 = Release|iPhone
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{97FF271D-E95D-4272-99A5-146992BE7CEF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{FAF9B695-85CE-4F28-8417-D7EAB77DEF79}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
 		{FAF9B695-85CE-4F28-8417-D7EAB77DEF79}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
 		{FAF9B695-85CE-4F28-8417-D7EAB77DEF79}.AppStore|iPhone.ActiveCfg = Release|Any CPU
