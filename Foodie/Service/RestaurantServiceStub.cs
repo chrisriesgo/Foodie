@@ -215,6 +215,7 @@ namespace Foodie.Service
 
 		void SendFilterUpdatedMessage()
 		{
+			MessagingCenter.Send<IRestaurantService> (this, "filter_updated");
 		}
 
 		public System.Collections.Generic.List<int> GetPriceFilterOptions ()
