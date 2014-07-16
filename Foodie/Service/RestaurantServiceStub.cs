@@ -10,6 +10,7 @@ using Foodie.Service;
 
 namespace Foodie.Service
 {
+
 	public class RestaurantServiceStub: IRestaurantService
 	{
 		ILocationService _locationService;

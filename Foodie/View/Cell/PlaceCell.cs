@@ -31,11 +31,17 @@ namespace Foodie.View.Cell
 			};
 
 			// create distance label
-//// ....
+			var distanceLabel = new Label 
+			{
+				VerticalOptions = LayoutOptions.Center,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				TextColor = Color.White,
+				Font = Font.BoldSystemFontOfSize(14)
+			};
 
 			pic.SetBinding (Image.SourceProperty, "ImageUrl");
 			nameLabel.SetBinding (Label.TextProperty, "Name");
-////		distanceLabel.SetBinding ....
+			distanceLabel.SetBinding(Label.TextProperty, "DistanceString");
 
 			// add children to relativeLayout
 			relativeLayout.Children.Add (pic, 
@@ -50,7 +56,7 @@ namespace Foodie.View.Cell
 			{
 				BackgroundColor = Color.FromRgba(0, 0, 0, 150),
 				Orientation = StackOrientation.Horizontal,
-				VerticalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.End,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Padding = new Thickness(5, 0, 5, 0),
 				Children = 
@@ -60,7 +66,18 @@ namespace Foodie.View.Cell
 			};
 
 			// stack layout for the distance view
-////		....
+			var distanceStackLayout = new StackLayout 
+			{
+				BackgroundColor = Color.FromRgba(0, 0, 0, 0),
+				Orientation = StackOrientation.Horizontal,
+				VerticalOptions = LayoutOptions.EndAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				Padding = new Thickness(5, 0, 5, 0),
+				Children = 
+				{
+					(Label)distanceLabel
+				}
+			};
 
 			// add nameStackLayout as a child to relativeLayout
 			relativeLayout.Children.Add (nameStackLayout, 
@@ -71,7 +88,12 @@ namespace Foodie.View.Cell
 			);
 
 			// add distanceStackLayout as a child to relativeLayout
-////		....
+			relativeLayout.Children.Add (distanceStackLayout, 
+				Constraint.RelativeToView(pic, (parent,sibling) => { return sibling.Width - 60; }),
+				Constraint.RelativeToView(pic, (parent,sibling) => { return sibling.Height - 40; }),
+				Constraint.Constant(55),
+				Constraint.Constant(30)
+			);
 
 			this.View = relativeLayout;
 		}
