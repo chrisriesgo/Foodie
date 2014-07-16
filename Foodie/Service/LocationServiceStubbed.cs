@@ -1,5 +1,8 @@
 ﻿using System;
 using Foodie.Model;
+using Foodie.Service;
+
+[assembly: Xamarin.Forms.Dependency (typeof (LocationServiceStubbed))]
 
 namespace Foodie.Service
 {

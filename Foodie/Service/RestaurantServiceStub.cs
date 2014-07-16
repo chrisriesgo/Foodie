@@ -4,6 +4,9 @@ using Foodie.Model;
 using System.Linq;
 using Xamarin.Forms;
 using Foodie.Utility;
+using Foodie.Service;
+
+[assembly: Xamarin.Forms.Dependency (typeof (RestaurantServiceStub))]
 
 namespace Foodie.Service
 {
